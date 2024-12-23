@@ -3,6 +3,7 @@ import './App.css'
 import BoardList from './components/BoardList';
 import CardsList from './components/CardsList';
 import NewBoardForm from './components/NewBoardForm';
+import NewCardForm from './components/NewCardForm';
 
 
 const cards_data = [
@@ -27,10 +28,11 @@ function App() {
         <h1>InspoForagers</h1>
       </header>
       <main>
-        <BoardList boards= {board_data}/>
-        <NewBoardForm />
-        <CardsList cards= {cards_data} />
-    </main>
+          <BoardList boards= {board_data}/>
+          <NewBoardForm />
+          <CardsList cards= {cards_data} />
+          <NewCardForm />
+      </main>
     </>
   )
 }

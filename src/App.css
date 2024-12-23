@@ -1,5 +1,18 @@
+.App-header{
+  text-align: center;
+}
 
 main {
-  display: flex;
-  gap: 100px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 30px;
+  padding: 30px;
+}
+
+@media (max-width: 768px) { 
+  .grid-container {
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto; 
+  }
 }
