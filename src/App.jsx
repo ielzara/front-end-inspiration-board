@@ -6,14 +6,17 @@ import NewBoardForm from './components/NewBoardForm';
 
 
 const cards_data = [
-  {id: 1, message: "Go to Japan", likes: 0},
-  {id: 2, message: "Go to Italy", likes: 0},
-  {id: 3, message: "Go to Greece", likes: 0},
+  {id: 1, message: "Go to Japan", likes: 0, board_id: 1},
+  {id: 2, message: "Go to Italy", likes: 0, board_id: 1},
+  {id: 3, message: "Go to Greece", likes: 0, board_id: 1},
+  {id: 4, message: "You are loved", likes: 0, board_id: 2},
+  {id: 5, message: "You are amazing", likes: 0, board_id: 2},
+  {id: 6, message: "You are beautiful", likes: 0, board_id: 2},
 ]
 
 const board_data = [
-  {id: 1, title: "Travel", owner: "Alice", cards: {cards_data}},
-  {id: 2, title: "Pick-Me-Up Quotes", owner: "Alice"},
+  {id: 1, title: "Travel", owner: "Alice", cards: [cards_data[0], cards_data[1], cards_data[2]]},
+  {id: 2, title: "Pick-Me-Up Quotes", owner: "Alice", cards: [cards_data[3], cards_data[4], cards_data[5]]},
 ]
 
 function App() {
