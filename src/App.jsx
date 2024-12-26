@@ -21,11 +21,19 @@ const board_data = [
 
 function App() {
   const [boards, setBoards] = useState(board_data);
+  const [selectedBoardId, setSelectedBoardId] = useState(null);
 
   const addBoard = (newBoard) => {
     const nextId = boards.length + 1; // Generate new ID
     setBoards([...boards, { id: nextId, ...newBoard, cards: [] }]);
   };
+
+  const handleBoardClick = (id) => {
+    console.log(`Board clicked: ${id}`);
+    setSelectedBoardId(id);
+  };
+  
+  const selectedBoard = boards.find(board => board.id === selectedBoardId);
 
   return (
     <>
@@ -33,10 +41,10 @@ function App() {
         <h1>InspoForagers</h1>
       </header>
       <main>
-          <BoardList boards= {boards}/>
+          <BoardList boards={boards} onBoardClick={handleBoardClick}/>
           <NewBoardForm addBoard={addBoard}/>
-          <CardsList cards= {cards_data} />
-          <NewCardForm />
+          {selectedBoard && <CardsList cards={selectedBoard.cards} />}
+          {selectedBoard && <NewCardForm />}
       </main>
     </>
   )

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Board from './Board';
 
 
-const BoardList = ({boards}) => {
+const BoardList = ({boards, onBoardClick }) => {
   const getBoardData = (boards) => {
     return boards.map((board) => {
       return (
@@ -12,6 +12,7 @@ const BoardList = ({boards}) => {
         id={board.id}
         title={board.title}
         owner={board.owner}
+        onBoardClick={onBoardClick}
         />
       );
   });
@@ -32,6 +33,7 @@ BoardList.propTypes = {
       title: PropTypes.string.isRequired,
       owner: PropTypes.string.isRequired,
     })).isRequired,
+  onBoardClick: PropTypes.func.isRequired,
 };
 
 export default BoardList;
