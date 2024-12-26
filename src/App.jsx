@@ -1,10 +1,9 @@
-
+import { useState } from 'react';
 import './App.css'
 import BoardList from './components/BoardList';
 import CardsList from './components/CardsList';
 import NewBoardForm from './components/NewBoardForm';
 import NewCardForm from './components/NewCardForm';
-
 
 const cards_data = [
   {id: 1, message: "Go to Japan", likes: 0, board_id: 1},
@@ -21,6 +20,12 @@ const board_data = [
 ]
 
 function App() {
+  const [boards, setBoards] = useState(board_data);
+
+  const addBoard = (newBoard) => {
+    const nextId = boards.length + 1; // Generate new ID
+    setBoards([...boards, { id: nextId, ...newBoard, cards: [] }]);
+  };
 
   return (
     <>
@@ -28,8 +33,8 @@ function App() {
         <h1>InspoForagers</h1>
       </header>
       <main>
-          <BoardList boards= {board_data}/>
-          <NewBoardForm />
+          <BoardList boards= {boards}/>
+          <NewBoardForm addBoard={addBoard}/>
           <CardsList cards= {cards_data} />
           <NewCardForm />
       </main>
