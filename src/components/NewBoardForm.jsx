@@ -33,25 +33,25 @@ const NewBoardForm = ({ addBoard }) => {
       <h2>Create a New Board</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Title:
-            <input 
-              type="text" 
+          <label htmlFor='title'>Title: </label>
+            <input
+              type="text"
+              id="title"
               name="title" 
               value={formData.title}
               onChange={handleChange}
             />
-          </label>
         </div>
         
         <div>
-          <label>Owner&apos;s Name:
+          <label htmlFor='owner'>Owner&apos;s Name: </label>
             <input 
               type="text"
+              id="owner"
               name="owner" 
               value={formData.owner}
               onChange={handleChange}
             />
-          </label>
         </div>
         <input type="submit" value="Submit"/>
       </form>
