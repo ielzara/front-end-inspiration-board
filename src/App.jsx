@@ -22,6 +22,7 @@ const board_data = [
 function App() {
   const [boards, setBoards] = useState(board_data);
   const [selectedBoardId, setSelectedBoardId] = useState(null);
+  
 
   const addBoard = (newBoard) => {
     const nextId = boards.length + 1; // Generate new ID
@@ -35,6 +36,38 @@ function App() {
   
   const selectedBoard = boards.find(board => board.id === selectedBoardId);
 
+  const handleLikeCard = (id) => {
+    setBoards(boards.map(board => {
+      if (board.id === selectedBoardId) {
+        return {
+          ...board,
+          cards: board.cards.map(card => {
+            if (card.id === id) {
+              return { ...card, likes: card.likes + 1 };
+            } else {
+              return card;
+            }
+          })
+        };
+      } else {
+        return board;
+      }
+    }));
+  }
+
+  const handleUnregisterCard = (id) => {
+    setBoards(boards.map(board => {
+      if (board.id === selectedBoardId) {
+        return {
+          ...board,
+          cards: board.cards.filter(card => card.id !== id)
+        };
+      } else {
+        return board;
+      }
+    }));
+  }
+
   return (
     <>
       <header className="App-header">
@@ -43,7 +76,13 @@ function App() {
       <main>
           <BoardList boards={boards} onBoardClick={handleBoardClick}/>
           <NewBoardForm addBoard={addBoard}/>
-          {selectedBoard && <CardsList cards={selectedBoard.cards} />}
+          {selectedBoard && <CardsList
+          cards={selectedBoard.cards} 
+          title={selectedBoard.title} 
+          owner={selectedBoard.owner}
+          onLikeCard={handleLikeCard}
+          onUnregisterCard={handleUnregisterCard}
+          />}
           {selectedBoard && <NewCardForm />}
       </main>
     </>

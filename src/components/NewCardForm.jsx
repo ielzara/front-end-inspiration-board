@@ -2,7 +2,7 @@ import './NewCardForm.css';
 
 const NewCardForm = () => {
   return (
-    <div>NewCardForm</div>
+    <div>Add a Card</div>
   )
 }
 
