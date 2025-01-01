@@ -22,7 +22,11 @@ const CardsList = ({cards, title, owner, onLikeCard, onUnregisterCard}) => {
     <div className='cardDisplay'>
       <h2>Board Selected: {title}</h2>
       <h3>Owner: {owner}</h3>
+      {cards.length === 0 ? (
+        <p>No Cards to Display. Please Add a Card using the Form ----{" > "}</p>
+      ) : (
         <ul className='card-list'> {getCardData(cards)}</ul>
+      )}
     </div>
   );
 };
