@@ -30,8 +30,11 @@ const NewCardForm = ({ addCard }) => {
             type="text"
             id='message'
             name="message"
+            placeholder='Max 40 Characters.'
+            maxLength='40'
             value={formData.message}
             onChange={handleChange}
+            required
           />
         </div>
         <div>

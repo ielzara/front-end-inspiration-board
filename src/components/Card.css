@@ -1,0 +1,25 @@
+.card {
+    background-color: #006400; /* Dark green background */
+    border: 1px solid #004d00; /* Slightly darker border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 16px; /* Space inside the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    color: white; /* Text color */
+    width: 50%;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.delete-button {
+    background-color: #ff0000; /* Red background */
+    border: 1px solid #cc0000; /* Slightly darker border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 8px; /* Space inside the button */
+    color: white; /* Text color */
+    float: right;
+}

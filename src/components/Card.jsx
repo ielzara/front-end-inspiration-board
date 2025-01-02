@@ -15,10 +15,10 @@ const Card = ({id, message, likes, onLikeCard, onUnregisterCard}) => {
     <li className="card">
       <h2> {message} </h2>
       <h3>
-        <button onClick={onLikeClicked} >
+        <button className='likes-button' onClick={onLikeClicked} >
           💚 {likes}
         </button>
-        <button onClick={onUnregisterClicked}> Delete Card </button>
+        <button className='delete-button' onClick={onUnregisterClicked}> Delete Card </button>
       </h3>
     </li>
   );
