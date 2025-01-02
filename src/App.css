@@ -1,3 +1,4 @@
+
 .App-header{
   text-align: center;
 }
@@ -17,15 +18,8 @@ main {
   }
 }
 
-.App{
-  /* background-image: url('./assets/leafyBackground.jpg'); */
-  /* background-size: cover;
-  background-position: 100%;
-  background-repeat: repeat;
-  height:auto; */
-}
-
 h1{
-  /* color: white; */
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  font-family: "Delius Unicase", serif;
+  font-size: 60px;
 }

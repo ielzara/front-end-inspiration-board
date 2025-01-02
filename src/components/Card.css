@@ -8,11 +8,12 @@
     width: 50%;
 }
 
-h2 {
+h3 {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-family: "Delius Unicase", serif;
 }
 
 .delete-button {

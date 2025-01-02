@@ -13,13 +13,13 @@ const Card = ({id, message, likes, onLikeCard, onUnregisterCard}) => {
 
   return(
     <li className="card">
-      <h2> {message} </h2>
-      <h3>
+      <h3> {message} </h3>
+      <h4>
         <button className='likes-button' onClick={onLikeClicked} >
           💚 {likes}
         </button>
         <button className='delete-button' onClick={onUnregisterClicked}> Delete Card </button>
-      </h3>
+      </h4>
     </li>
   );
 };

@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Delius+Unicase:wght@400;700&display=swap');
+
 :root {
   background-image: url('./assets/leafyBackground.jpg');
   background-size: cover;
   background-position: 100%;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   height:auto;
   font-family: Arial, Helvetica, sans-serif;
 }
