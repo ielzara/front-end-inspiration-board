@@ -29,6 +29,22 @@ function App() {
     setBoards([...boards, { id: nextId, ...newBoard, cards: [] }]);
   };
 
+  const addCard = (newCard) => {
+    const nextCardId = Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
+    
+    setBoards(boards.map(board => {
+      if (board.id === selectedBoardId) {
+      return {
+        ...board,
+        cards: [...board.cards, { id: nextCardId, ...newCard, likes: 0, board_id: selectedBoardId }]
+      };
+      } else {
+      return board;
+      }
+    }));
+
+  };
+
   const handleBoardClick = (id) => {
     console.log(`Board clicked: ${id}`);
     setSelectedBoardId(id);
@@ -68,6 +84,7 @@ function App() {
     }));
   }
 
+  
   return (
     <>
       <header className="App-header">
@@ -83,10 +100,11 @@ function App() {
           onLikeCard={handleLikeCard}
           onUnregisterCard={handleUnregisterCard}
           />}
-          {selectedBoard && <NewCardForm />}
+          {selectedBoard && <NewCardForm addCard={addCard} />}
       </main>
     </>
   )
-}
+  }
+
 
 export default App;
