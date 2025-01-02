@@ -1,7 +1,7 @@
 .boardDisplay{
-    border: 10px solid #000;
-}
-
-.boardList{
-    border: 5px solid #000;
+    box-shadow: 5px 10px 15px 5px rgba(15, 15, 15, 0.35);
+    color: #004d00;
+    border-radius: 10px;
+    width: 80%;
+    padding: 10px;
 }

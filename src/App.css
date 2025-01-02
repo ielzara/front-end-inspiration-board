@@ -6,8 +6,8 @@ main {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: auto auto;
-  gap: 30px;
-  padding: 30px;
+  gap: 50px;
+  padding: 50px;
 }
 
 @media (max-width: 768px) { 

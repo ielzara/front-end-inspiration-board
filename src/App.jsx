@@ -28,6 +28,13 @@ function App() {
     const nextId = boards.length + 1; // Generate new ID
     setBoards([...boards, { id: nextId, ...newBoard, cards: [] }]);
   };
+  
+  const deleteBoard = (id) => {
+    setBoards(boards.filter((board) => board.id !== id));
+    if (selectedBoardId === id) {
+      setSelectedBoardId(null); // Deselect the board if it's being deleted
+    }
+  };
 
   const addCard = (newCard) => {
     const nextCardId = Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
@@ -91,7 +98,7 @@ function App() {
         <h1>InspoForagers</h1>
       </header>
       <main>
-          <BoardList boards={boards} onBoardClick={handleBoardClick}/>
+          <BoardList boards={boards} onBoardClick={handleBoardClick} onDeleteBoard={deleteBoard} />
           <NewBoardForm addBoard={addBoard}/>
           {selectedBoard && <CardsList
           cards={selectedBoard.cards} 
