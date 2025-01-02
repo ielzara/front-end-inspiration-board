@@ -21,7 +21,7 @@ const CardsList = ({cards, title, owner, onLikeCard, onUnregisterCard}) => {
   return(
     <div className='cardDisplay'>
       <h2>Board Selected: {title}</h2>
-      <h3>Owner: {owner}</h3>
+      <h2>Owner: {owner}</h2>
       {cards.length === 0 ? (
         <p>No Cards to Display. Please Add a Card using the Form ----{" > "}</p>
       ) : (

@@ -1,7 +1,7 @@
 import './NewCardForm.css';
 import { useState } from 'react';
 
-const NewCardForm = ({ addCard }) => {
+const NewCardForm = ({ addCard}) => {
 
   const [formData, setFormData] = useState({ message: '' });
 
@@ -22,7 +22,7 @@ const NewCardForm = ({ addCard }) => {
 
   return (
     <section>
-      <h2>Add a Card</h2>
+      <h2>Add a Card to Selected Board </h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="message">Message: </label>
