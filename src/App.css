@@ -18,9 +18,14 @@ main {
 }
 
 .App{
-  background-image: url('./assets/leafyBackground.jpg');
-  background-size: cover;
+  /* background-image: url('./assets/leafyBackground.jpg'); */
+  /* background-size: cover;
   background-position: 100%;
   background-repeat: repeat;
-  height: 100vh;
+  height:auto; */
+}
+
+h1{
+  /* color: white; */
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
