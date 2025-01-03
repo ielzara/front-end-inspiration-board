@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import './Board.css';
+// import deleteIcon from './assets/delete';
 
 const Board = ({ id, title, owner, onBoardClick, onDeleteBoard }) => {
 	return (
@@ -10,7 +11,7 @@ const Board = ({ id, title, owner, onBoardClick, onDeleteBoard }) => {
         </button>
 
         <button className="delete-board" onClick={() => onDeleteBoard(id)}>
-          Delete
+          delete
         </button>
       </div>
     </li>

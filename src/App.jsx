@@ -48,6 +48,15 @@ const deleteBoardAsync = (id) => {
     });
 };
 
+const addCardAsync = (board_id, newCard) => {
+  return axios.post(`${kBaseUrl}/boards/${board_id}/cards`, newCard)
+    .then(response => response.data.card)
+    .catch(err => {
+      console.log(err);
+      throw new Error('Error adding card');
+    });
+};
+
 function App() {
   const [boards, setBoards] = useState([]);
   const [selectedBoardId, setSelectedBoardId] = useState(null);
@@ -83,19 +92,19 @@ function App() {
   };
 
   const addCard = (newCard) => {
-    const nextCardId = Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
-    
-    setBoards(boards.map(board => {
-      if (board.id === selectedBoardId) {
-      return {
-        ...board,
-        cards: [...board.cards, { id: nextCardId, ...newCard, likes: 0, board_id: selectedBoardId }]
-      };
+    addCardAsync(selectedBoardId, newCard)
+    .then(addedCard => {
+      setBoards(boards.map(board => {
+        if (board.id === selectedBoardId) {
+          return {
+            ...board,
+            cards: [...board.cards, addedCard]
+        };
       } else {
       return board;
       }
     }));
-
+    })
   };
 
   const handleBoardClick = (id) => {
