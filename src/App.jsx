@@ -57,6 +57,14 @@ const addCardAsync = (board_id, newCard) => {
     });
 };
 
+const unregisterCardAsync = (card_id) => {
+  return axios.delete(`${kBaseUrl}/cards/${card_id}`)
+    .catch(err => {
+      console.log(err);
+      throw new Error(`error deleting card ${card_id}`);
+    });
+};
+
 function App() {
   const [boards, setBoards] = useState([]);
   const [selectedBoardId, setSelectedBoardId] = useState(null);
@@ -138,18 +146,20 @@ function App() {
   }
 
   const handleUnregisterCard = (id) => {
-    setBoards(boards.map(board => {
-      if (board.id === selectedBoardId) {
-        return {
-          ...board,
-          cards: board.cards.filter(card => card.id !== id)
-        };
-      } else {
-        return board;
-      }
-    }));
-  }
-
+    unregisterCardAsync(id)
+      .then(() => {
+      setBoards(boards.map(board => {
+        if (board.id === selectedBoardId) {
+          return {
+            ...board,
+            cards: board.cards.filter(card => card.id !== id)
+          };
+        } else {
+          return board;
+        }
+      }));
+  });
+  };
   
   return (
     <div className='App'>
