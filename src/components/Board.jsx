@@ -20,7 +20,7 @@ const Board = ({ id, title, owner, onBoardClick, onDeleteBoard }) => {
 Board.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  owner: PropTypes.string.isRequired,
+  owner: PropTypes.string,
   onBoardClick: PropTypes.func.isRequired,
   onDeleteBoard: PropTypes.func.isRequired,
 };

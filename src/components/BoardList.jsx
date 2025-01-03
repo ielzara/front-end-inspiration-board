@@ -31,7 +31,7 @@ BoardList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
-      owner: PropTypes.string.isRequired,
+      owner: PropTypes.string,
     })).isRequired,
   onBoardClick: PropTypes.func.isRequired,
   onDeleteBoard: PropTypes.func.isRequired,

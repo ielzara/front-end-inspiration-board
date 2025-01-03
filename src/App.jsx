@@ -31,20 +31,37 @@ const getBoardsAsync = () => {
     });
 };
 
+const addBoardAsync = (newBoard) => {
+  return axios.post(`${kBaseUrl}/boards`, newBoard)
+    .then(response => response.data.board)
+    .catch(err => {
+      console.log(err);
+      throw new Error('Error adding board');
+    });
+};
+
 function App() {
   const [boards, setBoards] = useState([]);
   const [selectedBoardId, setSelectedBoardId] = useState(null);
   
   useEffect(() => {
-  getBoardsAsync()
+    getBoardsAsync()
     .then((fetchedBoards) => setBoards(fetchedBoards))
     .catch((err) => console.log(err.message));
 }, []);
 
   const addBoard = (newBoard) => {
-    const nextId = boards.length + 1; // Generate new ID
-    setBoards([...boards, { id: nextId, ...newBoard, cards: [] }]);
-  };
+    addBoardAsync(newBoard)
+    .then(addedBoard => {
+      setBoards(prevBoards => {
+        const updatedBoards = [...prevBoards, addedBoard];
+        return updatedBoards;
+      });
+    })
+    .catch(err => {
+      console.log('Error adding board:', err.message);
+    });
+};
   
   const deleteBoard = (id) => {
     setBoards(boards.filter((board) => board.id !== id));
