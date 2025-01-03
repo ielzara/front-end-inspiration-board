@@ -92,20 +92,24 @@ function App() {
   };
 
   const addCard = (newCard) => {
-    addCardAsync(selectedBoardId, newCard)
+  const cardWithLikes = { ...newCard, likes: 0 };
+  addCardAsync(selectedBoardId, cardWithLikes)
     .then(addedCard => {
       setBoards(boards.map(board => {
         if (board.id === selectedBoardId) {
           return {
             ...board,
             cards: [...board.cards, addedCard]
-        };
-      } else {
-      return board;
-      }
-    }));
+          };
+        } else {
+          return board;
+        }
+      }));
     })
-  };
+    .catch(err => {
+      console.log('Error adding card:', err.message);
+    });
+};
 
   const handleBoardClick = (id) => {
     console.log(`Board clicked: ${id}`);
