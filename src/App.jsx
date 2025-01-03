@@ -40,6 +40,14 @@ const addBoardAsync = (newBoard) => {
     });
 };
 
+const deleteBoardAsync = (id) => {
+  return axios.delete(`${kBaseUrl}/boards/${id}`)
+    .catch(err => {
+      console.log(err);
+      throw new Error(`error deleting task ${id}`);
+    });
+};
+
 function App() {
   const [boards, setBoards] = useState([]);
   const [selectedBoardId, setSelectedBoardId] = useState(null);
@@ -68,6 +76,10 @@ function App() {
     if (selectedBoardId === id) {
       setSelectedBoardId(null); // Deselect the board if it's being deleted
     }
+    deleteBoardAsync(id)
+    .catch(err => {
+      console.log('Error deleting board:', err.message);
+    })
   };
 
   const addCard = (newCard) => {
