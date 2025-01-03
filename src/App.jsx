@@ -1,28 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css'
 import BoardList from './components/BoardList';
 import CardsList from './components/CardsList';
 import NewBoardForm from './components/NewBoardForm';
 import NewCardForm from './components/NewCardForm';
+import axios from 'axios';
 
-const cards_data = [
-  {id: 1, message: "Go to Japan", likes: 0, board_id: 1},
-  {id: 2, message: "Go to Italy", likes: 0, board_id: 1},
-  {id: 3, message: "Go to Greece", likes: 0, board_id: 1},
-  {id: 4, message: "You are loved", likes: 0, board_id: 2},
-  {id: 5, message: "You are amazing", likes: 0, board_id: 2},
-  {id: 6, message: "You are beautiful", likes: 0, board_id: 2},
-]
+// const cards_data = [
+//   {id: 1, message: "Go to Japan", likes: 0, board_id: 1},
+//   {id: 2, message: "Go to Italy", likes: 0, board_id: 1},
+//   {id: 3, message: "Go to Greece", likes: 0, board_id: 1},
+//   {id: 4, message: "You are loved", likes: 0, board_id: 2},
+//   {id: 5, message: "You are amazing", likes: 0, board_id: 2},
+//   {id: 6, message: "You are beautiful", likes: 0, board_id: 2},
+// ]
 
-const board_data = [
-  {id: 1, title: "Travel", owner: "Alice", cards: [cards_data[0], cards_data[1], cards_data[2]]},
-  {id: 2, title: "Pick-Me-Up Quotes", owner: "Alice", cards: [cards_data[3], cards_data[4], cards_data[5]]},
-]
+// const board_data = [
+//   {id: 1, title: "Travel", owner: "Alice", cards: [cards_data[0], cards_data[1], cards_data[2]]},
+//   {id: 2, title: "Pick-Me-Up Quotes", owner: "Alice", cards: [cards_data[3], cards_data[4], cards_data[5]]},
+// ]
+
+const kBaseUrl = 'http://127.0.0.1:5000';
+
+const getBoardsAsync = () => {
+  return axios.get(`${kBaseUrl}/boards`)
+    .then(response => response.data.boards)
+    .catch(err => {
+      console.log(err);
+      throw new Error('error fetching boards');
+    });
+};
 
 function App() {
-  const [boards, setBoards] = useState(board_data);
+  const [boards, setBoards] = useState([]);
   const [selectedBoardId, setSelectedBoardId] = useState(null);
   
+  useEffect(() => {
+  getBoardsAsync()
+    .then((fetchedBoards) => setBoards(fetchedBoards))
+    .catch((err) => console.log(err.message));
+}, []);
 
   const addBoard = (newBoard) => {
     const nextId = boards.length + 1; // Generate new ID
@@ -99,6 +116,7 @@ function App() {
       </header>
       <main>
           <BoardList boards={boards} onBoardClick={handleBoardClick} onDeleteBoard={deleteBoard} />
+          {boards.length === 0 && <p>No boards available. Try adding one!</p>}
           <NewBoardForm addBoard={addBoard}/>
           {selectedBoard && <CardsList
           cards={selectedBoard.cards} 
