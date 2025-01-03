@@ -1,5 +1,6 @@
 import './NewCardForm.css';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const NewCardForm = ({ addCard }) => {
 
@@ -44,5 +45,8 @@ const NewCardForm = ({ addCard }) => {
     </section>
   )
 }
+NewCardForm.propTypes = {
+  addCard: PropTypes.func.isRequired,
+};
 
 export default NewCardForm;

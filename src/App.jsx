@@ -65,6 +65,14 @@ const unregisterCardAsync = (card_id) => {
     });
 };
 
+const addLikeAsync = (card_id) => {
+  return axios.patch(`${kBaseUrl}/cards/${card_id}/like`)
+    .catch(err => {
+      console.log(err);
+      throw new Error(`error liking card ${card_id}`);
+    });
+};
+
 function App() {
   const [boards, setBoards] = useState([]);
   const [selectedBoardId, setSelectedBoardId] = useState(null);
@@ -127,23 +135,26 @@ function App() {
   const selectedBoard = boards.find(board => board.id === selectedBoardId);
 
   const handleLikeCard = (id) => {
-    setBoards(boards.map(board => {
-      if (board.id === selectedBoardId) {
-        return {
-          ...board,
-          cards: board.cards.map(card => {
-            if (card.id === id) {
-              return { ...card, likes: card.likes + 1 };
-            } else {
-              return card;
-            }
-          })
-        };
-      } else {
-        return board;
-      }
+    addLikeAsync(id)
+    .then(() => {
+      setBoards(boards.map(board => {
+        if (board.id === selectedBoardId) {
+          return {
+            ...board,
+            cards: board.cards.map(card => {
+              if (card.id === id) {
+                return { ...card, likes: card.likes + 1 };
+              } else {
+                return card;
+              }
+            })
+          };
+        } else {
+          return board;
+        }
     }));
-  }
+  });
+  };
 
   const handleUnregisterCard = (id) => {
     unregisterCardAsync(id)
