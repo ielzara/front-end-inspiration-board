@@ -12,14 +12,18 @@ main {
 }
 
 @media (max-width: 768px) { 
-  .grid-container {
+  main {
     grid-template-columns: 1fr; 
     grid-template-rows: auto; 
   }
 }
 
 h1{
-  color: white;
+  color: #D5ED9F;
   font-family: "Delius Unicase", serif;
   font-size: 60px;
+}
+
+h2{
+  color: #31511E;
 }

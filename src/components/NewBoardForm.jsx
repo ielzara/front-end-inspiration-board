@@ -29,7 +29,7 @@ const NewBoardForm = ({ addBoard }) => {
   };
 
   return (
-    <section>
+    <section className='board-form'>
       <h2>Create a New Board</h2>
       <form onSubmit={handleSubmit}>
         <div>

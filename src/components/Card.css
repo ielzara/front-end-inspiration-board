@@ -2,10 +2,10 @@
     background-color: #2e712d; /* Dark green background */
     border: 1px solid #004d00; /* Slightly darker border */
     border-radius: 8px; /* Rounded corners */
-    padding: 16px; /* Space inside the card */
+    padding: 6px; /* Space inside the card */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     color: white; /* Text color */
-    width: 50%;
+    width: 30%;
 }
 
 h3 {

@@ -1,0 +1,14 @@
+.card-display {
+  background-color: #D5ED9F;
+  border-radius: 10px;
+  width: 80%;
+  padding: 10px;
+}
+
+.card-list{
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}

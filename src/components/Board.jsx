@@ -5,12 +5,12 @@ const Board = ({ id, title, owner, onBoardClick, onDeleteBoard }) => {
 	return (
     <li>
       <div className="boardList">
-        <button className={'boardName'} onClick={() => onBoardClick(id)}>
+        <button className='board-title' onClick={() => onBoardClick(id)}>
           {title}
         </button>
 
-        <button className="deleteBoard" onClick={() => onDeleteBoard(id)}>
-          Delete Board
+        <button className="delete-board" onClick={() => onDeleteBoard(id)}>
+          Delete
         </button>
       </div>
     </li>

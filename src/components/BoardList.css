@@ -1,6 +1,5 @@
-.boardDisplay{
-    background-color: rgb(211, 180, 140);
-    color: #004d00;
+.board-display{
+    background-color: #D5ED9F;
     border-radius: 10px;
     width: 80%;
     padding: 10px;

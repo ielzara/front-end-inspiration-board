@@ -19,13 +19,12 @@ const BoardList = ({boards, onBoardClick, onDeleteBoard }) => {
   });
 };
   return(
-  <div className='boardDisplay'>
+  <div className='board-display'>
   <h2>Boards</h2>
     <ol className='board-list'>{getBoardData(boards)}</ol>
     </div>
   );
 };
-
 
 BoardList.propTypes = {
   boards: PropTypes.arrayOf(
