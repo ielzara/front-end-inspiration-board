@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import './Board.css';
-// import deleteIcon from './assets/delete';
+import trash from '../assets/delete.png';
 
 const Board = ({ id, title, owner, onBoardClick, onDeleteBoard }) => {
 	return (
@@ -11,7 +11,7 @@ const Board = ({ id, title, owner, onBoardClick, onDeleteBoard }) => {
         </button>
 
         <button className="delete-board" onClick={() => onDeleteBoard(id)}>
-          delete
+          <img src={trash} alt="trash can icon"/>
         </button>
       </div>
     </li>

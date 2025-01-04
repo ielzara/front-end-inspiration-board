@@ -6,19 +6,6 @@ import NewBoardForm from './components/NewBoardForm';
 import NewCardForm from './components/NewCardForm';
 import axios from 'axios';
 
-// const cards_data = [
-//   {id: 1, message: "Go to Japan", likes: 0, board_id: 1},
-//   {id: 2, message: "Go to Italy", likes: 0, board_id: 1},
-//   {id: 3, message: "Go to Greece", likes: 0, board_id: 1},
-//   {id: 4, message: "You are loved", likes: 0, board_id: 2},
-//   {id: 5, message: "You are amazing", likes: 0, board_id: 2},
-//   {id: 6, message: "You are beautiful", likes: 0, board_id: 2},
-// ]
-
-// const board_data = [
-//   {id: 1, title: "Travel", owner: "Alice", cards: [cards_data[0], cards_data[1], cards_data[2]]},
-//   {id: 2, title: "Pick-Me-Up Quotes", owner: "Alice", cards: [cards_data[3], cards_data[4], cards_data[5]]},
-// ]
 
 const kBaseUrl = 'http://127.0.0.1:5000';
 
@@ -50,7 +37,9 @@ const deleteBoardAsync = (id) => {
 
 const addCardAsync = (board_id, newCard) => {
   return axios.post(`${kBaseUrl}/boards/${board_id}/cards`, newCard)
-    .then(response => response.data.card)
+    .then(response => {
+      return response.data;
+    })
     .catch(err => {
       console.log(err);
       throw new Error('Error adding card');
@@ -81,7 +70,7 @@ function App() {
     getBoardsAsync()
     .then((fetchedBoards) => setBoards(fetchedBoards))
     .catch((err) => console.log(err.message));
-}, []);
+    }, []);
 
   const addBoard = (newBoard) => {
     addBoardAsync(newBoard)
@@ -94,7 +83,7 @@ function App() {
     .catch(err => {
       console.log('Error adding board:', err.message);
     });
-};
+  };
   
   const deleteBoard = (id) => {
     setBoards(boards.filter((board) => board.id !== id));
@@ -108,14 +97,14 @@ function App() {
   };
 
   const addCard = (newCard) => {
-  const cardWithLikes = { ...newCard, likes: 0 };
-  addCardAsync(selectedBoardId, cardWithLikes)
+    const cardWithLikes = { ...newCard, likes: 0 };
+    addCardAsync(selectedBoardId, cardWithLikes)
     .then(addedCard => {
       setBoards(boards.map(board => {
         if (board.id === selectedBoardId) {
           return {
             ...board,
-            cards: [...board.cards, addedCard]
+            cards: [...(board.cards || []), addedCard]
           };
         } else {
           return board;

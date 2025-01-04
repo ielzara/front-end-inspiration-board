@@ -16,12 +16,13 @@ const CardsList = ({cards, title, owner, onLikeCard, onUnregisterCard}) => {
         onUnregisterCard={onUnregisterCard}
         />
       );
-  });
-};
+    });
+  };
+
   return(
     <div className="card-display">
-      <h2>Board Selected: {title}</h2>
-      <h2>Owner: {owner}</h2>
+      <h2>Board Selected: <span className='italic'>{title}</span></h2>
+      <h2>Owner: <span className='italic'>{owner}</span></h2>
       {cards.length === 0 ? (
         <p>No Cards to Display. Please Add a Card using the Form ----{" > "}</p>
       ) : (

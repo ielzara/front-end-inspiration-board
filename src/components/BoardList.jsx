@@ -16,8 +16,9 @@ const BoardList = ({boards, onBoardClick, onDeleteBoard }) => {
         onDeleteBoard={onDeleteBoard}
         />
       );
-  });
-};
+    });
+  };
+  
   return(
   <div className='board-display'>
   <h2>Boards</h2>
