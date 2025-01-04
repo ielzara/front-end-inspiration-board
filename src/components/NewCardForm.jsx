@@ -39,7 +39,7 @@ const NewCardForm = ({ addCard }) => {
           />
         </div>
         <div>
-          <input type="submit" value="Submit"/>
+          <input className="submit-btn" type="submit" value="Submit"/>
         </div>
       </form>
     </section>

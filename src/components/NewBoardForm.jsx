@@ -8,6 +8,7 @@ const NewBoardForm = ({ addBoard }) => {
     title: '',
     owner: '',
   });
+  const [isFormVisible, setIsFormVisible] = useState(true);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -23,13 +24,15 @@ const NewBoardForm = ({ addBoard }) => {
       alert('Both fields are required!');
       return;
     }
-    // Pass new board data to parent or backend
     addBoard(formData);
-    setFormData({title: '', owner: ''})
+    setFormData({title: '', owner: ''});
+    setIsFormVisible(false);
   };
 
   return (
     <section className='board-form'>
+    {isFormVisible && (
+      <>
       <h2>Create a New Board</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -53,8 +56,16 @@ const NewBoardForm = ({ addBoard }) => {
               onChange={handleChange}
             />
         </div>
-        <input type="submit" value="Submit"/>
+        <input className="submit-btn" type="submit" value="Submit"/>
       </form>
+      </>
+    )}
+      <button
+        onClick={() => setIsFormVisible(!isFormVisible)} 
+        className='toggle-form-button'
+      >
+        {isFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}
+      </button>
     </section>
   )
 }

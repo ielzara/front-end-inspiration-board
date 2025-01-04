@@ -3,4 +3,35 @@
     border-radius: 10px;
     width: 80%;
     padding: 10px;
+    position: relative;
+    min-height: 180px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input {
+    padding: 3px;
+    margin-bottom: 5px;
+}
+
+.toggle-form-button {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    bottom: 5px;
+}
+
+.toggle-form-button:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.submit-btn{
+    border: none;
+    padding: 6px 12px;
+    background-color: #2e712d;
+    color: white;
+    border-radius: 3px;
 }

@@ -6,14 +6,21 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     color: white; /* Text color */
     width: 30%;
+    position: relative;
 }
 
 h3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     font-family: "Delius Unicase", serif;
+    margin: 10px 0 70px 0;
+}
+
+.buttons {
+    position: absolute;
+    bottom: 6px;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .delete-button {

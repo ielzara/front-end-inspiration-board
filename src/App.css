@@ -7,7 +7,7 @@ main {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: auto auto;
-  gap: 50px;
+  gap: 40px;
   padding: 50px;
 }
 
@@ -22,8 +22,10 @@ h1{
   color: #D5ED9F;
   font-family: "Delius Unicase", serif;
   font-size: 60px;
+  margin-bottom: 0;
 }
 
 h2{
   color: #31511E;
+  margin: 10px 0;
 }
