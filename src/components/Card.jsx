@@ -1,5 +1,6 @@
 import './Card.css';
 import PropTypes from 'prop-types';
+import trash from '../assets/delete.png';
 
 const Card = ({id, message, likes, onLikeCard, onUnregisterCard}) => {
 
@@ -18,7 +19,7 @@ const Card = ({id, message, likes, onLikeCard, onUnregisterCard}) => {
         <button className='likes-button' onClick={onLikeClicked} >
           💚 {likes}
         </button>
-        <button className='delete-button' onClick={onUnregisterClicked}> Delete Card </button>
+        <button className='delete-button' onClick={onUnregisterClicked}> <img src={trash}/> </button>
       </div>
     </li>
   );
