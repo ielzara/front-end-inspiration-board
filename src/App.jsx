@@ -5,9 +5,10 @@ import CardsList from './components/CardsList';
 import NewBoardForm from './components/NewBoardForm';
 import NewCardForm from './components/NewCardForm';
 import axios from 'axios';
+import process from 'process';
 
 
-const kBaseUrl = 'http://127.0.0.1:5000';
+const kBaseUrl = process.env.VITE_APP_BACKEND_URL;
 
 const getBoardsAsync = () => {
   return axios.get(`${kBaseUrl}/boards`)
