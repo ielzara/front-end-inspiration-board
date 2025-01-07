@@ -8,7 +8,7 @@ import axios from 'axios';
 import process from 'process';
 
 
-const kBaseUrl = process.env.VITE_APP_BACKEND_URL;
+const kBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
 const getBoardsAsync = () => {
   return axios.get(`${kBaseUrl}/boards`)
